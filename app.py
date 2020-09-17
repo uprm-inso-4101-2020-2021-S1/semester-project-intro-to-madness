@@ -1,3 +1,5 @@
+#in order to run, type 'python -m flask run' in the command line
+
 from flask import Flask
 
 app = Flask(__name__)
