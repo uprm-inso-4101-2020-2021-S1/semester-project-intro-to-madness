@@ -32,7 +32,14 @@ class userHandler:
         mapped_result = self.build_user(result)
         return jsonify(User=mapped_result)
 
-    def getUserByFullName(self, first, last):
-        result = UserDAO().getUserByFullName(first, last)
-        mapped_result = self.build_user(result)
-        return jsonify(User=mapped_result)
+    def getUsersBy(self,String):
+        result = UserDAO().getUserByEmail(String)
+        if result:
+            mapped_result = self.build_user(result)
+            return jsonify(Thread=mapped_result)
+        result = UserDAO().getUserByUsername(String)
+        if result:
+            mapped_result = self.build_user(result)
+            return jsonify(Thread=mapped_result)
+        else:
+            return jsonify(Error="NOT FOUND"), 404

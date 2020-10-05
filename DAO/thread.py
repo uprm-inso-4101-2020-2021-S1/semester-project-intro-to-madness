@@ -1,10 +1,11 @@
+
 class ThreadDAO:
     def __init__(self):
         self.data = []
-        self.data.append([1, "03/15/2020", False])
-        self.data.append([2, "04/20/2020",False])
-        self.data.append([3, "04/21/2020", False])
-        self.data.append([4, "04/21/2020",True])
+        self.data.append([1, "March 4,2020","coins",True])
+        self.data.append([2, "September 6,1900","antiques",False])
+        self.data.append([3, "September 6,1900","coins", False])
+        self.data.append([4, "April 2, 1940","furniture",True])
 
     def getAllThreads(self):
         return self.data
@@ -29,11 +30,21 @@ class ThreadDAO:
     def getDuplicateThreads(self):
         result = []
         for entry in self.data:
-            if entry[2].__eq__(True):
+            if entry[3].__eq__(True):
                 result.append(entry)
             else:
                 continue
         return result
+
+    def getThreadsByCategory(self,category):
+        result = []
+        for entry in self.data:
+            if entry[2].__eq__(category):
+                result.append(entry)
+            else:
+                continue
+        return result
+
 
 
 

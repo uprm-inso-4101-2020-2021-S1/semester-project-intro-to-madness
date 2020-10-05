@@ -20,6 +20,10 @@ def getAllUsers():
 def getUserByID(ID):
     return userHandler().getUserByID(ID)
 
+@app.route("/users/<UserString>", methods=['GET'])
+def getUserBy(UserString):
+    return userHandler().getUsersBy(UserString)
+
 
 @app.route("/threads", methods=['GET'])
 def getAllThreads():
@@ -29,6 +33,15 @@ def getAllThreads():
 @app.route("/threads/<int:threadID>", methods=['GET'])
 def getThreadByID(threadID):
     return threadHandler().getThreadByID(threadID)
+
+
+@app.route("/threads/<ThreadString>", methods=['GET'])
+def getCategories(ThreadString):
+    return threadHandler().getThreadsBy(ThreadString)
+
+@app.route("/threads/duplicates", methods=['GET'])
+def getDuplicates():
+    return threadHandler().getAllDuplicateThreads()
 
 
 if __name__ == '__main__':

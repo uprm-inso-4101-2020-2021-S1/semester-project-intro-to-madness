@@ -1,6 +1,7 @@
 class UserDAO:
     def __init__(self):
         self.data = []
+       # ID/name/lastname/username/passowrd/email
         self.data.append([1, "Bob", "Ross", "BobR", "121", "email"])
         self.data.append([2, "Juan", "Hernandez", "JH", "147", "email2"])
         self.data.append([3, "Bill", "Bell", "BBell", "345", "email3"])
@@ -33,13 +34,6 @@ class UserDAO:
                 continue
         return None
 
-    def getUserByFullName(self, name, lastname):
-        for entry in self.data:
-            if name.__eq__(entry[1]) and lastname.__eq__(entry[2]):
-                return entry
-            else:
-                continue
-        return None
 
 
 
