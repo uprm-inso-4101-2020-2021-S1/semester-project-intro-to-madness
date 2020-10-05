@@ -3,10 +3,10 @@ from DAO.thread import ThreadDAO
 
 
 # Change mapped results
-class threadHandler:
+class ThreadHandler:
 
     def build_thread(self, row):
-        result = {"ID": row[0], 'Date': row[1],'Category':row[2] ,'isDuplicate': row[3]}
+        result = {"ID": row[0], 'Date': row[1], 'Category': row[2], 'isDuplicate': row[3]}
         return result
 
     def getAllThreads(self):
@@ -30,14 +30,13 @@ class threadHandler:
             return jsonify(Error="NOT FOUND"), 404
         return jsonify(Thread=mapped_result)
 
-
-    def getThreadsBy(self,String):
-        result = ThreadDAO().getThreadsByDate(String)
-        if len(result)>0:
+    def getThreadsBy(self, string):
+        result = ThreadDAO().getThreadsByDate(string)
+        if len(result) > 0:
             mapped_result = self.buildMethod(result)
             return jsonify(Thread=mapped_result)
-        result = ThreadDAO().getThreadsByCategory(String)
-        if len(result)>0:
+        result = ThreadDAO().getThreadsByCategory(string)
+        if len(result) > 0:
             mapped_result = self.buildMethod(result)
             return jsonify(Thread=mapped_result)
         else:

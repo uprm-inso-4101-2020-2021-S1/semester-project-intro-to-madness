@@ -1,6 +1,8 @@
 # in order to run, type 'python -m flask run' in the command line
-from Handlers.userHandler import userHandler
-from Handlers.threadHandler import threadHandler
+from Handlers.userHandler import UserHandler
+from Handlers.threadHandler import ThreadHandler
+from Handlers.commentHandler import CommentHandler
+from Handlers.itemHandler import ItemHandler
 from flask import Flask
 
 app = Flask(__name__)
@@ -13,36 +15,72 @@ def home():
 
 @app.route("/users", methods=['GET'])
 def getAllUsers():
-    return userHandler().getAllUsers()
+    return UserHandler().getAllUsers()
 
 
 @app.route("/users/<int:ID>", methods=['GET'])
 def getUserByID(ID):
-    return userHandler().getUserByID(ID)
+    return UserHandler().getUserByID(ID)
+
 
 @app.route("/users/<UserString>", methods=['GET'])
 def getUserBy(UserString):
-    return userHandler().getUsersBy(UserString)
+    return UserHandler().getUsersBy(UserString)
 
 
 @app.route("/threads", methods=['GET'])
 def getAllThreads():
-    return threadHandler().getAllThreads()
+    return ThreadHandler().getAllThreads()
 
 
 @app.route("/threads/<int:threadID>", methods=['GET'])
 def getThreadByID(threadID):
-    return threadHandler().getThreadByID(threadID)
+    return ThreadHandler().getThreadByID(threadID)
 
 
 @app.route("/threads/<ThreadString>", methods=['GET'])
 def getCategories(ThreadString):
-    return threadHandler().getThreadsBy(ThreadString)
+    return ThreadHandler().getThreadsBy(ThreadString)
+
 
 @app.route("/threads/duplicates", methods=['GET'])
 def getDuplicates():
-    return threadHandler().getAllDuplicateThreads()
+    return ThreadHandler().getAllDuplicateThreads()
 
+
+@app.route("/comment", methods=['GET'])
+def getAllComment():
+    return CommentHandler().getAllComment()
+
+
+@app.route("/comment/<int:ID>", methods=['GET'])
+def getCommentByID(ID):
+    return CommentHandler().getCommentByID(ID)
+
+
+@app.route("/comment/<DateString>", methods=['GET'])
+def getCommentByDate(DateString):
+    return CommentHandler().getCommentByDate(DateString)
+
+
+@app.route("/item", methods=['GET'])
+def getAllItem():
+    return ItemHandler().getAllItem()
+
+
+@app.route("/item/<int:ID>", methods=['GET'])
+def getItemByID(ID):
+    return ItemHandler().getItemByID(ID)
+
+
+@app.route("/item/price/<int:price>", methods=['GET'])
+def getItemByAveragePrice(price):
+    return ItemHandler().getAveragePrice(price)
+
+
+@app.route("/item/<ItemString>", methods=['GET'])
+def getItemBy(ItemString):
+    return ItemHandler().getItemBy(ItemString)
 
 if __name__ == '__main__':
     app.run()

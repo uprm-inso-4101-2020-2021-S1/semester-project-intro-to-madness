@@ -1,7 +1,8 @@
 from flask import jsonify
 from DAO.user import UserDAO
 
-class userHandler:
+
+class UserHandler:
 
     def build_user(self, row):
         result = {"ID": row[0], 'first_name': row[1], 'last_name': row[2], 'username': row[3], 'password': row[4],
@@ -32,12 +33,12 @@ class userHandler:
         mapped_result = self.build_user(result)
         return jsonify(User=mapped_result)
 
-    def getUsersBy(self,String):
-        result = UserDAO().getUserByEmail(String)
+    def getUsersBy(self, string):
+        result = UserDAO().getUserByEmail(string)
         if result:
             mapped_result = self.build_user(result)
             return jsonify(Thread=mapped_result)
-        result = UserDAO().getUserByUsername(String)
+        result = UserDAO().getUserByUsername(string)
         if result:
             mapped_result = self.build_user(result)
             return jsonify(Thread=mapped_result)
