@@ -1,35 +1,45 @@
+import psycopg2
+
+from CollectorDB.dbconfig import pg_config
+
+
 class CommentDAO:
     def __init__(self):
-        self.data = []
-        self.data.append([1, "Hi.", "March 4,2020"])
-        self.data.append([2, "Bye.", "September 6,1900"])
-        self.data.append([3, "Wut up.", "September 6,1900"])
-        self.data.append([4, "Peace out.", "April 2, 1940"])
+        connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'],
+                                                            pg_config['user'],
+                                                            pg_config['passwd'])
+        self.conn = psycopg2._connect(connection_url)
 
     def getAllComment(self):
-        return self.data
+        cursor = self.conn.cursor()
+        query = "Select * from comment as C order by C.comment_id;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getCommentById(self, id):
-        for entry in self.data:
-            if id.__eq__(entry[0]):
-                return entry
-            else:
-                continue
-        return None
+        cursor = self.conn.cursor()
+        query = "Select * from comment as C where C.comment_id=%s order by C.comment_id;"
+        cursor.execute(query, (id,))
+        result = cursor.fetchone()
+        return result
 
     def getContent(self, content):
-        for entry in self.data:
-            if content.__eq__(entry[1]):
-                return entry
-            else:
-                continue
-        return None
+        cursor = self.conn.cursor()
+        query = "Select * from comment as C where C.content=%s order by C.comment_id;"
+        cursor.execute(query, (content,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getCommentByDate(self, date):
+        cursor = self.conn.cursor()
+        query = "Select * from comment as C where C.comment_date=%s order by C.comment_id;"
+        cursor.execute(query, (date,))
         result = []
-        for entry in self.data:
-            if date.__eq__(entry[2]):
-                result.append(entry)
-            else:
-                continue
+        for row in cursor:
+            result.append(row)
         return result
