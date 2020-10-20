@@ -1,52 +1,52 @@
+import psycopg2
+from db.dbconfig import pg_config
+
 
 class ThreadDAO:
+
     def __init__(self):
-        self.data = []
-        self.data.append([1, "March 4,2020","coins",True])
-        self.data.append([2, "September 6,1900","antiques",False])
-        self.data.append([3, "September 6,1900","coins", False])
-        self.data.append([4, "April 2, 1940","furniture",True])
+        connection_url = "dbname=%s user=%s password=%s"%(pg_config['dbname'],pg_config['user'],pg_config['passwd'])
+        self.conn = psycopg2._connect(connection_url)
 
     def getAllThreads(self):
-        return self.data
+        cursor = self.conn.cursor()
+        query = "Select * from thread as T order by T.thread_id;"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
 
     def getThreadById(self, id):
-        for entry in self.data:
-            if id.__eq__(entry[0]):
-                return entry
-            else:
-                continue
-        return None
+        cursor = self.conn.cursor()
+        query = "Select * from thread as T where T.thread_id=%s order by T.thread_id;"
+        cursor.execute(query, (id,))
+        result = cursor.fetchone()
+        return result
 
     def getThreadsByDate(self, date):
+        cursor = self.conn.cursor()
+        query = " Select * from thread as T where T.thread_date=%s order by T.thread_id;"
+        cursor.execute(query, (date,))
         result = []
-        for entry in self.data:
-            if date.__eq__(entry[1]):
-                result.append(entry)
-            else:
-                continue
+        for row in cursor:
+            result.append(row)
         return result
 
     def getDuplicateThreads(self):
+        cursor = self.conn.cursor()
+        query = " Select * from thread as T where T.duplicate=%s order by T.thread_id;"
+        cursor.execute(query, ("True",))
         result = []
-        for entry in self.data:
-            if entry[3].__eq__(True):
-                result.append(entry)
-            else:
-                continue
+        for row in cursor:
+            result.append(row)
         return result
 
-    def getThreadsByCategory(self,category):
+    def getThreadsByCategory(self, category):
+        cursor = self.conn.cursor()
+        query = " Select * from thread as T where T.category=%s order by T.thread_id;"
+        cursor.execute(query, (category,))
         result = []
-        for entry in self.data:
-            if entry[2].__eq__(category):
-                result.append(entry)
-            else:
-                continue
+        for row in cursor:
+            result.append(row)
         return result
-
-
-
-
-
-

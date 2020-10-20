@@ -6,7 +6,7 @@ from DAO.thread import ThreadDAO
 class ThreadHandler:
 
     def build_thread(self, row):
-        result = {"ID": row[0], 'Date': row[1], 'Category': row[2], 'isDuplicate': row[3]}
+        result = {"ID": row[0], 'Date': row[1], 'isDuplicate': row[2], 'Category': row[3],'user_id': row[4],'item_id': row[5]}
         return result
 
     def getAllThreads(self):

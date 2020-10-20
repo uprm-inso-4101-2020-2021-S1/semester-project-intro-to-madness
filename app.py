@@ -58,27 +58,27 @@ def getCommentByID(ID):
     return CommentHandler().getCommentByID(ID)
 
 
-@app.route("/comment/<DateString>", methods=['GET'])
+@app.route("/comments/<DateString>", methods=['GET'])
 def getCommentByDate(DateString):
     return CommentHandler().getCommentByDate(DateString)
 
 
-@app.route("/item", methods=['GET'])
+@app.route("/items", methods=['GET'])
 def getAllItem():
     return ItemHandler().getAllItem()
 
 
-@app.route("/item/<int:ID>", methods=['GET'])
+@app.route("/items/<int:ID>", methods=['GET'])
 def getItemByID(ID):
     return ItemHandler().getItemByID(ID)
 
 
-@app.route("/item/price/<int:price>", methods=['GET'])
+@app.route("/items/price/<int:price>", methods=['GET'])
 def getItemByAveragePrice(price):
     return ItemHandler().getAveragePrice(price)
 
 
-@app.route("/item/<ItemString>", methods=['GET'])
+@app.route("/items/<ItemString>", methods=['GET'])
 def getItemBy(ItemString):
     return ItemHandler().getItemBy(ItemString)
 
