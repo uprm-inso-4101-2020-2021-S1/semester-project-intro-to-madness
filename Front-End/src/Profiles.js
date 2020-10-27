@@ -50,10 +50,10 @@ function App() {
         <table style={{backgroundColor: "blanchedalmond", borderStyle: "solid", marginLeft:"200px"}}>
           <tr><th>
             {/* This is the first column TODO: you know*/}
-            <div className='infoSquare'><h2>Name: {user.name + ' ' + user.lastName}</h2></div>
-            <div className='infoSquare'><h2>Gender: {user.gender}</h2></div>
-            <div className='infoSquare'><h2>{user.threads} threads posted</h2></div>
-            <div className='infoSquare' style={{height:"200px"}}><h2>Description: {user.description}</h2></div>
+            <div className='infoSquare'><h2>Name: <i>{user.name + ' ' + user.lastName}</i></h2></div>
+            <div className='infoSquare'><h2>Gender: <i>{user.gender}</i></h2></div>
+            <div className='infoSquare'><h2><i>{user.threads}</i> threads posted</h2></div>
+            <div className='infoSquare' style={{height:"200px"}}><h2>Description: <i>{user.description}</i></h2></div>
             </th><th>
 
             {/* This is the "User Activity", aka the right side of the table */}
