@@ -1,6 +1,7 @@
 import React from 'react';
 import './Item.css';
-import logo from './logo.png';
+import example from './Example.PNG';
+
 
 function App() {
  
@@ -10,20 +11,22 @@ function App() {
   const Popular = () => {}
   const Recent = () => {}
   const AboutUs = () => {}
+  const relatedPictures = () => {}
+  const comments = () => {}
 
   // This would call on the backend to find the user information
   const [user, setUser] = React.useState({
       item: 'profesor',
-      price: 'so much wow',
-      description: 'will vaguely flunk you',
-      history: 'so much history idk'
+      price: '$1000000',
+      description: 'will vaguely flunk ',
+      history: '$so much history idk '
   });
 
   return (
-    <div className="UserProfile">
+    <div className="ItemThread">
       <div id='TopBar'>
         <ul>
-          <li className='top' id='left'><img src={logo} className="Web-logo" alt="logo" /></li>
+          <li className='top' id='left'><img src={example} className="Web-logo" alt="example" /></li>
           <li className='top' id='center'><input type="text" placeholder="Search threads.."></input></li>
           <li className='top' id='right'><button onClick={signIn}>Log In | Sign In</button></li>
         </ul>
@@ -39,8 +42,28 @@ function App() {
       </div>
 
     {/* Everything that's not the Top or Side Bar */}
-      <div id='Body'>
-          
+      <div id='Table'>
+        <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "absolute", right: "0px", float: "right"} }>
+          <tr><th>
+              <div className='relatedTop'><h2>Related Items</h2></div>
+              <div className='pictureSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='picturesButton'>Item Name</a></div>
+              <div className='pictureSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='picturesButton'>Item Name</a></div>
+              <div className='pictureSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='picturesButton'>Item Name</a></div>
+              <div className='pictureSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='picturesButton'>Item Name</a></div>
+              <div className='pictureSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='picturesButton'>Item Name</a></div>
+            </th></tr>
+        </table>
+      </div>
+      <div id='User'>
+        <h1 className='body'>{user.item}</h1> <br></br>
+        <div className='body'><img style={{width: "200px", height: "150px"}} src={example} className="Web-logo" alt="example" /></div>
+        <h1 className='body'>{user.price}</h1>
+        <h3 style={{position: "relative", left: "300px"}}>Item Description</h3>
+        <div className='input'>{user.description}</div>
+        <h3 style={{position: "relative", left: "300px"}}>Item History</h3>
+        <p className='input' style={{borderStyle: "solid"}}>{user.history}</p>
+        <h3 style={{position: "relative", left: "300px"}}>Comments:</h3>
+        <p className='input' style={{borderStyle: "solid"}}>No comments</p>
       </div>
     </div>
   );
