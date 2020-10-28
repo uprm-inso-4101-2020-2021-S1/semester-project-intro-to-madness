@@ -1,5 +1,5 @@
 import psycopg2
-from db.dbconfig import pg_config
+from CollectorDB.dbconfig import pg_config
 
 class UserDAO:
     def __init__(self):
@@ -43,7 +43,24 @@ class UserDAO:
             return None
         return result
 
+    def insertUser(self,password,first_name,last_name,email,username,role):
+        cursor = self.conn.cursor()
+        query = "insert into users(username, password, first_name, last_name, email, role) values (%s, %s, %s, %s, %s, %s) returning user_id;"
+        cursor.execute(query,(password,first_name,last_name,email,username,role,))
+        result = cursor.fetchone()
+        query =""
+        cursor.execute(query,(result,))
+        self.conn.comit()
 
+    def getUserByUsernameAndPAssword(self,username,password):
+        cursor = self.conn.cursor()
+        query = "Select * from users as U where U.username = %s AND U.password = %s order by U.user_id;"
+        cursor.execute(query, (username,password))
+        result = cursor.fetchone()
+        if not result:
+            return None
+        else:
+            return result
 
 
 

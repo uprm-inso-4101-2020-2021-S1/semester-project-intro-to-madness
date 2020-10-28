@@ -3,7 +3,7 @@ from Handlers.userHandler import UserHandler
 from Handlers.threadHandler import ThreadHandler
 from Handlers.commentHandler import CommentHandler
 from Handlers.itemHandler import ItemHandler
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -16,6 +16,16 @@ def home():
 @app.route("/users", methods=['GET'])
 def getAllUsers():
     return UserHandler().getAllUsers()
+
+
+@app.route("/users/register", methods=['POST'])
+def Register():
+    return UserHandler().createUser(request.json)
+
+
+@app.route("/users/login", methods=['POST'])
+def Login():
+    return UserHandler().getUserByUsernameAndPassword(request.json)
 
 
 @app.route("/users/<int:ID>", methods=['GET'])
@@ -81,6 +91,7 @@ def getItemByAveragePrice(price):
 @app.route("/items/<ItemString>", methods=['GET'])
 def getItemBy(ItemString):
     return ItemHandler().getItemBy(ItemString)
+
 
 if __name__ == '__main__':
     app.run()

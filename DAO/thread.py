@@ -1,5 +1,5 @@
 import psycopg2
-from db.dbconfig import pg_config
+from CollectorDB.dbconfig import pg_config
 
 
 class ThreadDAO:

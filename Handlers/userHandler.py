@@ -6,11 +6,12 @@ class UserHandler:
 
     def build_user(self, row):
         result = {"ID": row[0], 'password': row[1], 'first_name': row[2], 'last_name': row[3], 'email': row[4],
-                  'username': row[5],'role':row[6]}
+                  'username': row[5], 'role': row[6]}
         return result
-    def build_user_attributes(self4param0,param0,param1,param2,param3,param4,param5,param6):
-        result = {"ID": param0, 'first_name': param1, 'last_name': param2, 'username': param3, 'password':param4,
-                  'email': param5,'role':param6}
+
+    def build_user_attributes(self, ID, param1, param2, param3, param4, param5, param6, param7):
+        result = {"ID": ID, 'password': param1, 'first_name': param2, 'last_name': param3, 'email': param4,
+                  'username': param5, 'role': param6}
         return result
 
     def getAllUsers(self):
@@ -39,37 +40,26 @@ class UserHandler:
         else:
             return jsonify(Error="NOT FOUND"), 404
 
-    def createUser(self,args):
-        param0 = args.get('ID')
-        param1 = args.get('first_name')
-        param2 = args.get('last_name')
-        param3 = args.get('username')
-        param4 = args.get('password')
-        param5 = args.get('email')
-        if param0 and param1 and param2 and param3 and param4 and param5:
-            result = self.build_user_attributes(param0,param1,param2,param3,param4,param5)
-            return jsonify(CreateStatus= result),201
+    def getUserByUsernameAndPassword(self,json):
+        username = json['username']
+        password = json['password']
+        result = UserDAO.getUserByUsernameAndPAssword(username,password)
+        if not result:
+            return jsonify(Unauthorized ="Incorrect username or password, please try again"),401
         else:
-            return jsonify(Error="Missing attributes in post request"),404
+            return jsonify(User=self.build_user(result)),200
 
-    def updateUser(self,ID,args):
-        dao = UserDAO()
-        if(dao.getUserById(ID)):
-            param0 = args.get('ID')
-            param1 = args.get('first_name')
-            param2 = args.get('last_name')
-            param3 = args.get('username')
-            param4 = args.get('password')
-            param5 = args.get('email')
-
-            if(param0 !=ID):
-                return jsonify(Error="User does not match"),400
-            elif param0 and param1 and param2 and param3 and param4 and param5:
-                result = self.build_user_attributes(param0,param1,param2,param3,param4,param5)
-                return jsonify(UpdateStatus= result),201
-
-            else:
-                return jsonify(Error="Missing attributes in post request"), 404
+    def createUser(self, json):
+        param1 = json['ID']
+        param2 = json['password']
+        param3 = json['first_name']
+        param4 = json['last_name']
+        param5 = json['email']
+        param6 = json['username']
+        param7 = json['role']
+        if param1 and param2 and param3 and param4 and param5 and param6 and param7:
+            user = UserDAO.insertUser(param1, param2, param3, param4, param5, param6.param7)
+            return jsonify(
+                User=self.build_user_attributes(user, param1, param2, param3, param4, param5, param6, param7))
         else:
-            return jsonify(Error = "No User Found"),404
-
+            return jsonify(Error="Unexpected attribute in post request"), 400
