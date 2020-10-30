@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-import example from '../Images/Example.PNG';
+import example from '../Images/logo.png';
 import { Link, withRouter } from 'react-router-dom';
 
    function Nav() {
@@ -18,7 +18,7 @@ import { Link, withRouter } from 'react-router-dom';
       <nav>
          <div id='TopBar'>
             <ul>
-               <li className='top' id='left'><img src={example} className="Web-logo" alt="example" /></li>
+               <li className='top' id='left'><Link style={navStyle} to = '/'><img src={example} className="Web-logo" alt="example" /></Link></li>
                <li className='top'><input type="text" placeholder="Search threads.." id='searchBar'></input></li>
                <u1 className="nav-links"><Link style={navStyle} to ='/profile'><button id='right'>Log In | Sign In</button></Link></u1>
             </ul>
