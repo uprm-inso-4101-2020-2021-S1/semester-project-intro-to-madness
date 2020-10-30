@@ -43,16 +43,16 @@ class UserDAO:
             return None
         return result
 
-    def insertUser(self,password,first_name,last_name,email,username,role):
+    def insertUser(self, password,  first_name, last_name,email, username, role):
         cursor = self.conn.cursor()
-        query = "insert into users(username, password, first_name, last_name, email, role) values (%s, %s, %s, %s, %s, %s) returning user_id;"
-        cursor.execute(query,(password,first_name,last_name,email,username,role,))
+        query = "insert into users(id,password,  first_name, last_name,email, username, role) values (%s, %s, %s, %s, " \
+                "%s, %s) returning user_id; "
+        cursor.execute(query,(password,  first_name, last_name,email, username, role,))
         result = cursor.fetchone()
-        query =""
-        cursor.execute(query,(result,))
-        self.conn.comit()
+        return result
 
-    def getUserByUsernameAndPAssword(self,username,password):
+
+    def getUserByUsernameAndPassword(self,username,password):
         cursor = self.conn.cursor()
         query = "Select * from users as U where U.username = %s AND U.password = %s order by U.user_id;"
         cursor.execute(query, (username,password))
@@ -62,5 +62,13 @@ class UserDAO:
         else:
             return result
 
+    def getUserInfo(self,id):
+        cursor = self.conn.cursor()
+        query = "select first_name, last_name, email, username, role from users as u where u.user_id=%s;"
+        cursor.execute(query, (id,))
+        result = cursor.fetchone()
+        if not result:
+            return None
+        return result
 
 

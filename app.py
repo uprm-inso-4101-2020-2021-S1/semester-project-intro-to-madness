@@ -18,7 +18,12 @@ def getAllUsers():
     return UserHandler().getAllUsers()
 
 
-@app.route("/users/register", methods=['POST'])
+@app.route("/users/info <int:ID>", methods=['GET'])
+def getUserInfo(ID):
+    return UserHandler().getUserInformation(ID)
+
+
+@app.route("/users/register ", methods=['POST'])
 def Register():
     return UserHandler().createUser(request.json)
 
