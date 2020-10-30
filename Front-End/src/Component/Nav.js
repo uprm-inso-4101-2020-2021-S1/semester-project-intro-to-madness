@@ -19,8 +19,8 @@ import { Link, withRouter } from 'react-router-dom';
          <div id='TopBar'>
             <ul>
                <li className='top' id='left'><img src={example} className="Web-logo" alt="example" /></li>
-               <li className='top' id='center'><input type="text" placeholder="Search threads.."></input></li>
-               <u1 className="nav-links"><Link style={navStyle} to ='/profile'><button className='top' id='right'>Log In | Sign In</button></Link></u1>
+               <li className='top'><input type="text" placeholder="Search threads.." id='searchBar'></input></li>
+               <u1 className="nav-links"><Link style={navStyle} to ='/profile'><button id='right'>Log In | Sign In</button></Link></u1>
             </ul>
          </div>
 

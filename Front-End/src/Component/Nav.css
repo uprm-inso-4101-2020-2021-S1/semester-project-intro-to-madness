@@ -16,25 +16,22 @@ button {
   font-size: 16px;
 }
 
-.top {
-  display: inline;
-}
 #left {
-  float: left;
   padding-left: 5px;
   padding-top: 2px;
 }
 
-#center {
-  margin-top: 15; /* Doesn't heckin work*/
+#searchBar {
+  margin-top: 15px;
+  width: 100px;
+  padding: 5px 100px;
 }
 
 #right {
-  padding-top: 6px;
-  padding-top: 6px;
-  padding-right: 7px;
-  float: right;
+  margin: 6px 6px;
+  padding: 15px 32px;
 }
+
 .Web-logo {
   padding-top: 3px;
   width: 70x;
