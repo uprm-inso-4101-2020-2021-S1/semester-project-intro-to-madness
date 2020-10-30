@@ -19,7 +19,6 @@ button {
 .top {
   display: inline;
 }
-
 #left {
   float: left;
   padding-left: 5px;
@@ -32,22 +31,23 @@ button {
 
 #right {
   padding-top: 6px;
+<<<<<<< HEAD:Front-End/src/Profiles.css
+=======
+  padding-top: 6px;
+>>>>>>> Item:Front-End/src/Component/Profiles.css
   padding-right: 7px;
   float: right;
 }
-
 .Web-logo {
   padding-top: 3px;
   width: 70x;
   height: 50px;
 }
-
 #TopBar {
   background-color: #2F4F4F;
   color: gray;
   height: 60px;
 }
-
 #SideBar {
   float: left;
   background-color: #416e6e;
@@ -55,22 +55,18 @@ button {
   /* height: 100%; DOESN'T WORK REEE*/
   height: 700px; /* This number is overkill but since I cant scale it on %, gotta play it safe */ 
 }
-
 #AboutUs {
   position: absolute;
   bottom: 10px;
   padding-left: 14px;
 }
-
 span {
   background-color: rgb(13, 138, 138);
 }
-
 h1 {
   font-size: 64px;
   padding-left: 200px;
 }
-
 .infoSquare {
   height: 70px;
   width: 600px;
@@ -78,7 +74,6 @@ h1 {
   margin: 7px;
   background-color: rgb(179, 162, 162);
 }
-
 .actSquare {
   height: 70px;
   width: 580px;
