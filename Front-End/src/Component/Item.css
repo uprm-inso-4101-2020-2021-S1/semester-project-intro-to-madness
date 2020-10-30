@@ -1,0 +1,77 @@
+  .Web-logo {
+    padding-top: 3px;
+    width: 70x;
+    height: 50px;
+  }
+
+  .relatedTop {
+    height: 70px;
+    width: 200px;
+    position: relative;
+    left: 100px;
+    border-style: solid;
+    margin: 7px;
+    background-color: gray;
+  }
+  
+  .relatedSquare {
+    height: 125px;
+    width: 400px;
+    border-style: solid;
+    margin: 7px;
+    background-color: gray;
+  }
+
+  #relatedPictures {
+    position: absolute;
+    left: 50px;
+    padding: 10px;
+    height: 100px;
+    width: 150px;
+  }
+
+  #relatedButton {
+    position: absolute;
+    padding: 30px;
+    right: 60px;
+    border: none;
+    background-color: grey;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer; 
+  }
+
+  .bodyItem {
+    height: 70px;
+    width: 200px;
+    position: relative;
+    left: 200px;
+    border-style: solid;
+    margin: 7px;
+    background-color: gray;
+  }
+  
+  .bodySquare {
+    height: 150px;
+    width: 600px;
+    border-style: solid;
+    margin: 7px;
+    background-color: gray;
+  }
+
+  #input {
+    display: inline-block;
+    position: relative;
+    background-color: lightgrey;
+    border: 2px solid black;
+    text-align: left;
+  }
+
+  #picture{
+    width: 200px;
+    height: 150px;
+    position: relative;
+  }
