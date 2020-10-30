@@ -18,12 +18,12 @@ def getAllUsers():
     return UserHandler().getAllUsers()
 
 
-@app.route("/users/info <int:ID>", methods=['GET'])
-def getUserInfo(ID):
-    return UserHandler().getUserInformation(ID)
+@app.route("/users/activity/<int:ID>", methods=['GET'])
+def getUserActivity(ID):
+    return UserHandler().getUserActivity(ID)
 
 
-@app.route("/users/register ", methods=['POST'])
+@app.route("/users/register", methods=['POST'])
 def Register():
     return UserHandler().createUser(request.json)
 
@@ -35,7 +35,7 @@ def Login():
 
 @app.route("/users/<int:ID>", methods=['GET'])
 def getUserByID(ID):
-    return UserHandler().getUserByID(ID)
+    return UserHandler().getUserInformation(ID)
 
 
 @app.route("/users/<UserString>", methods=['GET'])
@@ -56,6 +56,11 @@ def getThreadByID(threadID):
 @app.route("/threads/<ThreadString>", methods=['GET'])
 def getCategories(ThreadString):
     return ThreadHandler().getThreadsBy(ThreadString)
+
+
+@app.route("/threads/count/<int:ID>", methods=['GET'])
+def getThreadCount(ID):
+    return ThreadHandler().getThreadCount(ID)
 
 
 @app.route("/threads/duplicates", methods=['GET'])

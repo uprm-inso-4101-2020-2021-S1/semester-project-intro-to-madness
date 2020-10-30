@@ -28,25 +28,28 @@ class ThreadDAO:
         cursor = self.conn.cursor()
         query = " Select * from thread as T where T.thread_date=%s order by T.thread_id;"
         cursor.execute(query, (date,))
-        result = []
-        for row in cursor:
-            result.append(row)
+        result = cursor.fetchall()
         return result
 
     def getDuplicateThreads(self):
         cursor = self.conn.cursor()
         query = " Select * from thread as T where T.duplicate=%s order by T.thread_id;"
         cursor.execute(query, ("True",))
-        result = []
-        for row in cursor:
-            result.append(row)
+        result = cursor.fetchall()
         return result
 
     def getThreadsByCategory(self, category):
         cursor = self.conn.cursor()
         query = " Select * from thread as T where T.category=%s order by T.thread_id;"
         cursor.execute(query, (category,))
-        result = []
-        for row in cursor:
-            result.append(row)
+        result = cursor.fetchall()
         return result
+
+    def countThreads(self,ID):
+        cursor = self.conn.cursor()
+        query = " Select * from thread as T where T.category=%s order by T.thread_id;"
+        cursor.execute(query, (ID,))
+        result = cursor.fetchone()
+        print(result)
+        return result
+

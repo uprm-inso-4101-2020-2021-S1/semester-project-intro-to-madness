@@ -1,10 +1,11 @@
 import psycopg2
 from CollectorDB.dbconfig import pg_config
 
+
 class UserDAO:
     def __init__(self):
         self.data = []
-        connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'],pg_config['user'],pg_config['passwd'])
+        connection_url = "dbname=%s user=%s password=%s" % (pg_config['dbname'], pg_config['user'], pg_config['passwd'])
         self.conn = psycopg2._connect(connection_url)
 
     def getAllUsers(self):
@@ -19,7 +20,7 @@ class UserDAO:
     def getUserById(self, id):
         cursor = self.conn.cursor()
         query = "Select * from users as U where U.user_id = %s order by U.user_id;"
-        cursor.execute(query,(id,))
+        cursor.execute(query, (id,))
         result = cursor.fetchone()
         if not result:
             return None
@@ -43,26 +44,26 @@ class UserDAO:
             return None
         return result
 
-    def insertUser(self, password,  first_name, last_name,email, username, role):
+    def insertUser(self, password, first_name, last_name, email, username, role):
         cursor = self.conn.cursor()
-        query = "insert into users(id,password,  first_name, last_name,email, username, role) values (%s, %s, %s, %s, " \
+        query = "insert into users(password,  first_name, last_name,email, username, role) values (%s, %s, %s, %s, " \
                 "%s, %s) returning user_id; "
-        cursor.execute(query,(password,  first_name, last_name,email, username, role,))
+        cursor.execute(query, (password, first_name, last_name, email, username, role,))
         result = cursor.fetchone()
+        self.conn.commit()
         return result
 
-
-    def getUserByUsernameAndPassword(self,username,password):
+    def getUserByUsernameAndPassword(self, username, password):
         cursor = self.conn.cursor()
         query = "Select * from users as U where U.username = %s AND U.password = %s order by U.user_id;"
-        cursor.execute(query, (username,password))
+        cursor.execute(query, (username, password,))
         result = cursor.fetchone()
         if not result:
             return None
         else:
             return result
 
-    def getUserInfo(self,id):
+    def getUserInfo(self, id):
         cursor = self.conn.cursor()
         query = "select first_name, last_name, email, username, role from users as u where u.user_id=%s;"
         cursor.execute(query, (id,))
@@ -71,4 +72,12 @@ class UserDAO:
             return None
         return result
 
-
+    def getUserActivity(self, ID):
+        cursor = self.conn.cursor()
+        query = "select item_name, item_description, image_url from users as u natural inner join thread as t natural " \
+                "inner join item as i where u.user_id=%s; "
+        cursor.execute(query, (ID,))
+        result = cursor.fetchmany(2)
+        if not result:
+            return None
+        return result

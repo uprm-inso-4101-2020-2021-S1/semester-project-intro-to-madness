@@ -31,19 +31,35 @@ class ThreadHandler:
         return jsonify(Thread=mapped_result)
 
     def getThreadsBy(self, string):
-        result = ThreadDAO().getThreadsByDate(string)
-        if len(result) > 0:
+        result = "";
+        try:
+            result = ThreadDAO().getThreadsByDate(string)
+        except:
+           print()
+
+        if len(result)>0:
             mapped_result = self.buildMethod(result)
             return jsonify(Thread=mapped_result)
-        result = ThreadDAO().getThreadsByCategory(string)
+
+        try:
+            result = ThreadDAO().getThreadsByCategory(string)
+        except:
+            print()
+
         if len(result) > 0:
-            mapped_result = self.buildMethod(result)
-            return jsonify(Thread=mapped_result)
-        else:
-            return jsonify(Error="NOT FOUND"), 404
+                mapped_result = self.buildMethod(result)
+                return jsonify(Thread=mapped_result)
+
+        return jsonify(Error="Not Found"),404
 
     def buildMethod(self, result):
         mapped_result = []
         for entry in result:
             mapped_result.append(self.build_thread(entry))
         return mapped_result
+
+    def getThreadCount(self,ID):
+        result = ThreadDAO().countThreads(ID)
+        mapped_result = {"ThreadCount": result}
+        return jsonify(Count=mapped_result),200
+
