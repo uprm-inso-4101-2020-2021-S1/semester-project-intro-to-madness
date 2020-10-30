@@ -34,7 +34,7 @@ function Home() {
       </div> */}
 
       <h2>Recent Threads: </h2>
-      <div id='Body'>
+      <div id='Recents'>
 
       {recents.map((recent) => (
 
