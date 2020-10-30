@@ -68,9 +68,9 @@ def getCommentByID(ID):
     return CommentHandler().getCommentByID(ID)
 
 
-@app.route("/comments/<DateString>", methods=['GET'])
-def getCommentByDate(DateString):
-    return CommentHandler().getCommentByDate(DateString)
+@app.route("/comment/date", methods=['GET'])
+def getCommentByDate():
+    return CommentHandler().getCommentByDate(request.json)
 
 
 @app.route("/items", methods=['GET'])

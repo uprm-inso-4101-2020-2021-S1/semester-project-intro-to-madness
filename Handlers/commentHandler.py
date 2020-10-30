@@ -6,13 +6,13 @@ from DAO.comment import CommentDAO
 class CommentHandler:
 
     def build_comment(self, row):
-        result = {"ID": row[0], 'Content': row[1], 'Date': row[1]}
+        result = {'comment_id': row[0], 'content': row[1], 'comment_date': row[2], 'user_id': row[3], 'thread_id': row[4]}
         return result
 
     def getAllComment(self):
         result = CommentDAO().getAllComment()
         mapped_result = self.buildMethod(result)
-        return jsonify(Thread=mapped_result)
+        return jsonify(Comment=mapped_result)
 
     def getCommentByID(self, id):
         result = CommentDAO().getCommentById(id)
@@ -21,12 +21,12 @@ class CommentHandler:
             return jsonify(Error="NOT FOUND"), 404
         else:
             mapped_result.append(self.build_comment(result))
-        return jsonify(Thread=mapped_result)
+        return jsonify(Comment=mapped_result)
 
-    def getCommentByDate(self, date):
-        result = CommentDAO().getCommentByDate(date)
+    def getCommentByDate(self, json):
+        result = CommentDAO().getCommentByDate(json["comment_date"])
         mapped_result = self.buildMethod(result)
-        return jsonify(Thread=mapped_result)
+        return jsonify(Comment=mapped_result)
 
     def buildMethod(self, result):
         mapped_result = []
