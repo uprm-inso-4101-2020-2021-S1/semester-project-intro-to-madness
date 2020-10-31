@@ -33,7 +33,7 @@ function Home() {
         </u1>
       </div> */}
 
-      <h2>Recent Threads: </h2>
+      <h2 style={{marginLeft: '200px'}}>Recent Threads: </h2>
       <div id='Recents'>
 
       {recents.map((recent) => (

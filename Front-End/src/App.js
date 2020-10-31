@@ -5,7 +5,8 @@ import Item from './Component/Item.js';
 import Profiles from './Component/Profiles.js';
 import Error from './Component/Error.js';
 import Nav from './Component/Nav.js';
-import Home from './Component/Home.js'
+import Home from './Component/Home.js';
+import About from './Component/About.js';
  
 function App() {
     return (      
@@ -16,6 +17,7 @@ function App() {
               <Route path="/" component={Home} exact />
               <Route path="/item" component={Item} />
               <Route path="/profile" component={Profiles}/>
+              <Route path="/about" component={About}/>
               <Route component={Error}/>
            </Switch>
         </div> 

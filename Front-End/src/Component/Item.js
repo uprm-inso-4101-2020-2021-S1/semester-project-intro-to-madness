@@ -19,8 +19,8 @@ import { NavLink } from 'react-router-dom';
     <div className="ItemThread">
 
     {/* Everything that's not the Top or Side Bar */}
-      <div id='Table'>
-        <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "relative", right: "0px", float: "right"} }>
+    <div id='Body'>
+        <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "relative", right: '0', float: "right", top: '60px'}}>
           <tr><th>
               <div className='relatedTop'><h2>Related Items</h2></div>
               <div className='relatedSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='relatedButton'>Item Name</a></div>
@@ -30,9 +30,9 @@ import { NavLink } from 'react-router-dom';
               <div className='relatedSquare'><img id='relatedPictures' src={example} className="Web-logo" alt="example" /><a href="#" class="button" id='relatedButton'>Item Name</a></div>
             </th></tr>
         </table>
-      </div>
-      <div id='Item'>
-      <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "relative", margin: "auto"} }>
+
+
+      <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "relative", margin: "auto", top: '60px'} }>
           <tr><th>
               <div className='bodyItem'><h2>{item.item}</h2></div>
               <div className='bodySquare'><img id='picture' src={example} className="Web-logo" alt="example" /></div>

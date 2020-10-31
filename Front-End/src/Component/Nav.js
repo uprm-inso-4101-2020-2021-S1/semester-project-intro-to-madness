@@ -8,7 +8,8 @@ import { Link, withRouter } from 'react-router-dom';
    const YourItems = () => {}
    const Popular = () => {}
    const Recent = () => {}
-   const AboutUs = () => {}
+   const About = () => {}
+   const Home = () => {}
   
       const navStyle = {
          color: 'white'
@@ -26,10 +27,11 @@ import { Link, withRouter } from 'react-router-dom';
 
          <div id='SideBar'>
             <ul>
-               <u1 className="nav-links"><Link style={navStyle} to ='/item'><li style={{paddingTop: "10px"}}><button style={{width: "120px"}} onClick={YourItems}>Your Items</button></li></Link></u1>
+               <u1 className="nav-links"><Link style={navStyle} to ='/'><li style={{paddingTop: "10px"}}><button style={{width: "120px"}} onClick={Home}>Home</button></li></Link></u1>
+               <u1 className="nav-links"><Link style={navStyle} to ='/item'><li><button style={{width: "120px"}} onClick={YourItems}>Your Items</button></li></Link></u1>
                <li style={{paddingTop: "10px"}}><button style={{width: "120px"}} onClick={Popular}>Popular Items</button></li>
                <li style={{paddingTop: "10px"}}><button style={{width: "120px"}} onClick={Recent}>Recently Added</button></li>
-               <li id='AboutUs'><button style={{width: "120px"}} onClick={AboutUs}>About Us</button></li>
+               <u1 className="nav-links"><Link style={navStyle} to ='/about'><li id='AboutUs'><button style={{width: "120px"}} onClick={About}>About Us</button></li></Link></u1>
             </ul>
          </div>
       </nav>

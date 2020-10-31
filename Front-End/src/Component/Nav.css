@@ -37,19 +37,27 @@ button {
   height: 50px;
 }
 #TopBar {
+  overflow: hidden;
   background-color: #2F4F4F;
-  color: gray;
-  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 #SideBar {
-  float: left;
-  background-color: #416e6e;
+  height: 100%;
   width: 150px;
-  /* height: 100%; DOESN'T WORK REEE*/
-  height: 700px; /* This number is overkill but since I cant scale it on %, gotta play it safe */ 
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  left: 0;
+  background-color: #416e6e;
+  overflow-x: hidden;
+  padding-top: 0px;
 }
+
 #AboutUs {
   position: absolute;
-  bottom: 10px;
+  bottom: 80px;
   padding-left: 14px;
 }
