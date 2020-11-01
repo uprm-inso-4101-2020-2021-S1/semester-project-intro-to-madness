@@ -43,6 +43,10 @@ def getUserBy(UserString):
     return UserHandler().getUsersBy(UserString)
 
 
+@app.route("/users/update/<int:ID>", methods=['PUT'])
+def updateUser(ID):
+    return UserHandler().updateUser(ID,request.json)
+
 @app.route("/threads", methods=['GET'])
 def getAllThreads():
     return ThreadHandler().getAllThreads()
@@ -58,15 +62,13 @@ def getCategories(ThreadString):
     return ThreadHandler().getThreadsBy(ThreadString)
 
 
-@app.route("/threads/count/<int:ID>", methods=['GET'])
-def getThreadCount(ID):
-    return ThreadHandler().getThreadCount(ID)
-
-
 @app.route("/threads/duplicates", methods=['GET'])
 def getDuplicates():
     return ThreadHandler().getAllDuplicateThreads()
 
+@app.route("/threads/create", methods=['Post'])
+def createThread():
+    return ThreadHandler().createThread(request.json)
 
 @app.route("/comment", methods=['GET'])
 def getAllComment():
