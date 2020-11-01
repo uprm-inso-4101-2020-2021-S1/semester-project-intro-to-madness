@@ -7,12 +7,12 @@ class UserHandler:
     # Data formatting ---------------------------------------------------------------------------------------
 
     def build_user(self, row):
-        result = {"ID": row[0], 'password': row[1], 'first_name': row[2], 'last_name': row[3], 'email': row[4],
+        result = {'user_id': row[0], 'password': row[1], 'first_name': row[2], 'last_name': row[3], 'email': row[4],
                   'username': row[5], 'role': row[6]}
         return result
 
     def build_user_attributes(self, ID, paswd, fname, lname, email, uname, role):
-        result = {"ID": ID, 'password': paswd, 'first_name': fname, 'last_name': lname, 'email': email,
+        result = {'user_id': ID, 'password': paswd, 'first_name': fname, 'last_name': lname, 'email': email,
                   'username': uname, 'role': role}
         return result
 

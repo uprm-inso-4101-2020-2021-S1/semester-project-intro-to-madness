@@ -50,6 +50,32 @@ class ThreadDAO:
         query = " Select * from thread as T where T.category=%s order by T.thread_id;"
         cursor.execute(query, (ID,))
         result = cursor.fetchone()
-        print(result)
         return result
 
+    def getContentAndUsernameFromCommentsOnSpecificThread(self,ID):
+        cursor = self.conn.cursor()
+        query = " select content,username from comment as c natural inner join thread as t natural inner join users " \
+                "as u where t.thread_id=%s and t.thread_id=c.thread_id and u.user_id=c.user_id;"
+        cursor.execute(query, (ID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getSpecificItemThread(self, ID):
+        cursor = self.conn.cursor()
+        query = " select item_name, item_description, item_history, average_price, image_url, category from item " \
+                "as i natural inner join thread as t where t.thread_id=%s and t.item_id=t.item_id;"
+        cursor.execute(query, (ID,))
+        result = cursor.fetchone()
+        return result
+
+    def getItemWithRelatedCategories(self, Category):
+        cursor = self.conn.cursor()
+        query = " select item_name, image_url, (select category FROM thread as t2 WHERE t.category = t2.category) " \
+                "category from item as i natural inner join thread as t where t.thread_id=%s limit 3;"
+        cursor.execute(query, (Category,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result

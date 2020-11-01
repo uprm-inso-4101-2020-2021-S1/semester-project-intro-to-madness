@@ -62,6 +62,17 @@ def getCategories(ThreadString):
 def getThreadCount(ID):
     return ThreadHandler().getThreadCount(ID)
 
+@app.route("/comment/thread/<int:ID>", methods=['GET'])
+def getContentAndUsernameFromCommentsOnSpecificThread(ID):
+    return ThreadHandler().getContentAndUsernameFromCommentsOnSpecificThread(ID)
+
+@app.route("/threads/item/<int:ID>", methods=['GET'])
+def getSpecificItemThread(ID):
+    return ThreadHandler().getSpecificItemThread(ID)
+
+@app.route("/threads/item/category/<int:ID>", methods=['GET'])
+def getItemWithRelatedCategories(ID):
+    return ThreadHandler().getItemWithRelatedCategories(ID)
 
 @app.route("/threads/duplicates", methods=['GET'])
 def getDuplicates():
