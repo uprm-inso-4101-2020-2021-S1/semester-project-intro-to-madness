@@ -4,14 +4,14 @@
     background-color: rgb(179, 162, 162);
 }
 
-#Recents {
+.threads-div {
     background-color: blanchedalmond;
     border-style: solid;
     margin-left: 200px;
     width: 1220px;
 }
 
-.threads {
+.threads-table {
     width: 1200px;
     border-style: solid;
     margin: 8px;

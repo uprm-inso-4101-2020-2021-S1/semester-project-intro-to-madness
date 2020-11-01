@@ -25,20 +25,13 @@ function Home() {
     <div className="Home">
 
       <h1><span>Collector's Wiki</span></h1>
-      {/* <div className = "nav-links">
-        <u1>
-          <h3>Quick Links:</h3>
-          <Link to='/item'><li id='list'>Item</li></Link>
-          <Link to='/profile'><li id='list'>Profiles</li></Link>
-        </u1>
-      </div> */}
 
       <h2 style={{marginLeft: '200px'}}>Recent Threads: </h2>
-      <div id='Recents'>
+      <div className='threads-div'>
 
       {recents.map((recent) => (
 
-        <table className='threads'><tr>
+        <table className='threads-table'><tr>
           <th><Link to='/item'><img src={recent.image} className="threadImage"></img></Link></th>
           <th><h2><b>{recent.item}</b></h2>
           <h2>By: <i>{recent.OP}</i></h2>
