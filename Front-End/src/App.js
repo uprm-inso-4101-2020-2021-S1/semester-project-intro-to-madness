@@ -7,6 +7,7 @@ import Error from './Component/Error.js';
 import Nav from './Component/Nav.js';
 import Home from './Component/Home.js';
 import About from './Component/About.js';
+import Search from './Component/Search.js';
  
 function App() {
     return (      
@@ -18,6 +19,7 @@ function App() {
               <Route path="/item" component={Item} />
               <Route path="/profile" component={Profiles}/>
               <Route path="/about" component={About}/>
+              <Route path="/search" component={Search}/>
               <Route component={Error}/>
            </Switch>
         </div> 
