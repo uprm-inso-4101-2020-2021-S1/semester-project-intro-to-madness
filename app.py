@@ -74,7 +74,7 @@ def getContentAndUsernameFromCommentsOnSpecificThread(ID):
 def getSpecificItemThread(ID):
     return ThreadHandler().getSpecificItemThread(ID)
 
-@app.route("/threads/item/category/<int:ID>", methods=['GET'])
+@app.route("/category/thread/<int:ID>", methods=['GET'])
 def getItemWithRelatedCategories(ID):
     return ThreadHandler().getItemWithRelatedCategories(ID)
 

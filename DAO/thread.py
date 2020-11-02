@@ -119,8 +119,5 @@ class ThreadDAO:
         query = " select item_name, image_url, (select category FROM thread as t2 WHERE t.category = t2.category) " \
                 "category from item as i natural inner join thread as t where t.thread_id=%s limit 3;"
         cursor.execute(query, (Category,))
-        result = []
-        for row in cursor:
-            result.append(row)
+        result = cursor.fetchone()
         return result
-

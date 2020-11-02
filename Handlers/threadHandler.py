@@ -57,6 +57,19 @@ class ThreadHandler:
         else:
             return jsonify(Error="Unexpected attribute in post request"), 400
 
+    def build_comments_from_users_on_a_specific_thread(self, entry):
+        result = {'content': entry[0], 'username': entry[1]}
+        return result
+
+    def build_item_thread(self, entry):
+        result = {'item_name': entry[0], 'item_description': entry[1], 'item_history': entry[2],
+                  'average_price': entry[3], 'image_url': entry[4], 'category': entry[5]}
+        return result
+
+    def build_item_with_related_category(self, entry):
+        result = {'item_1': entry[0], 'item_2': entry[1], 'item_3': entry[2]}
+        return result
+
     # Data access methods ----------------------------------------------------------------------------------
 
     def getAllThreads(self):
@@ -124,7 +137,7 @@ class ThreadHandler:
         mapped_result = {"ThreadCount": result}
         return jsonify(Count=mapped_result),200
 
-    def getContentAndUsernameFromCommentsOnSpecificThread(self,ID):
+    def getContentAndUsernameFromCommentsOnSpecificThread(self, ID):
         result = ThreadDAO().getContentAndUsernameFromCommentsOnSpecificThread(ID)
         mapped_result = []
         if result is None:
