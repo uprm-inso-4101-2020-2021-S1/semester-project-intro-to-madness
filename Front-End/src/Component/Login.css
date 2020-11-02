@@ -1,0 +1,9 @@
+
+  
+  .CredentialSquare {
+    height: 100px;
+    width: 350px;
+    border-style: solid;
+    margin: 10px;
+    background-color: rgb(179, 162, 162);
+  }

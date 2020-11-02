@@ -8,6 +8,7 @@ import Nav from './Component/Nav.js';
 import Home from './Component/Home.js';
 import About from './Component/About.js';
 import Search from './Component/Search.js';
+import Login from './Component/Login.js';
  
 function App() {
     return (      
@@ -20,6 +21,7 @@ function App() {
               <Route path="/profile" component={Profiles}/>
               <Route path="/about" component={About}/>
               <Route path="/search" component={Search}/>
+              <Route path="/login" component={Login}/>
               <Route component={Error}/>
            </Switch>
         </div> 
