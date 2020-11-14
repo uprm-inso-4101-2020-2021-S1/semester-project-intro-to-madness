@@ -1,0 +1,63 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center; /* Added for the SideBar. Doesn't affect the TopBar */
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#left {
+  padding-left: 5px;
+  padding-top: 2px;
+}
+
+#searchBar {
+  margin-top: 15px;
+  width: 100px;
+  padding: 5px 100px;
+}
+
+#right {
+  margin: 6px 6px;
+  padding: 15px 32px;
+}
+
+.Web-logo {
+  padding-top: 3px;
+  width: 70x;
+  height: 50px;
+}
+#TopBar {
+  overflow: hidden;
+  background-color: #2F4F4F;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+#SideBar {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  left: 0;
+  background-color: #416e6e;
+  overflow-x: hidden;
+  padding-top: 0px;
+}
+
+#AboutUs {
+  position: absolute;
+  bottom: 80px;
+  padding-left: 14px;
+}

@@ -1,0 +1,24 @@
+.nav-links {
+    width: 260px;
+    margin-left: 170px;
+    background-color: rgb(179, 162, 162);
+}
+
+.threads-div {
+    background-color: blanchedalmond;
+    border-style: solid;
+    margin-left: 200px;
+    width: 1220px;
+}
+
+.threads-table {
+    width: 1200px;
+    border-style: solid;
+    margin: 8px;
+    background-color: rgb(179, 162, 162);
+}
+
+.threadImage {
+    width: 140px;
+    height: 140px;
+}
