@@ -7,16 +7,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-# Test function for connecting to Front-End
-@app.route('/api', methods=['GET'])
-def api():
-    return {
-        'item': "Holographic Charizard Card",
-        'OP': "SolongBowser111",
-        'collaborator': "TeylorSwish",
-        'date': "2020/10/30",
-        'latestPing': "2020/10/31"
-    }
 
 @app.route("/")
 def home():
