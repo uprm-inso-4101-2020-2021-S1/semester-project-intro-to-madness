@@ -93,7 +93,7 @@ class UserHandler:
         result = UserDAO().getUserInfo(ID)
         if result is None:
             return jsonify(Error="NOT FOUND"), 404
-        mapped_result = self.__build_public_user(result)
+        mapped_result = self.__build_user(result)
         return jsonify(User=mapped_result)
 
     def getUserActivity(self,ID):
