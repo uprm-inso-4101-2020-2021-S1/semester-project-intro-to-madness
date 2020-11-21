@@ -45,7 +45,8 @@ def getUserBy(UserString):
 
 @app.route("/users/update/<int:ID>", methods=['PUT'])
 def updateUser(ID):
-    return UserHandler().updateUser(ID,request.json)
+    return UserHandler().updateUser(ID, request.json)
+
 
 @app.route("/threads", methods=['GET'])
 def getAllThreads():
@@ -66,25 +67,31 @@ def getCategories(ThreadString):
 def getThreadCount(ID):
     return ThreadHandler().getThreadCount(ID)
 
+
 @app.route("/comment/thread/<int:ID>", methods=['GET'])
 def getContentAndUsernameFromCommentsOnSpecificThread(ID):
     return ThreadHandler().getContentAndUsernameFromCommentsOnSpecificThread(ID)
+
 
 @app.route("/threads/item/<int:ID>", methods=['GET'])
 def getSpecificItemThread(ID):
     return ThreadHandler().getSpecificItemThread(ID)
 
+
 @app.route("/category/thread/<int:ID>", methods=['GET'])
 def getItemWithRelatedCategories(ID):
     return ThreadHandler().getItemWithRelatedCategories(ID)
+
 
 @app.route("/threads/duplicates", methods=['GET'])
 def getDuplicates():
     return ThreadHandler().getAllDuplicateThreads()
 
+
 @app.route("/threads/create", methods=['Post'])
 def createThread():
     return ThreadHandler().createThread(request.json)
+
 
 @app.route("/comment", methods=['GET'])
 def getAllComment():
@@ -99,6 +106,11 @@ def getCommentByID(ID):
 @app.route("/comment/date", methods=['GET'])
 def getCommentByDate():
     return CommentHandler().getCommentByDate(request.json)
+
+
+@app.route("/comment/create", methods=['Post'])
+def createComment():
+    return CommentHandler().createComment(request.json)
 
 
 @app.route("/items", methods=['GET'])
@@ -119,6 +131,11 @@ def getItemByAveragePrice(price):
 @app.route("/items/<ItemString>", methods=['GET'])
 def getItemBy(ItemString):
     return ItemHandler().getItemBy(ItemString)
+
+
+@app.route("/items/create", methods=['Post'])
+def createItem():
+    return ItemHandler().createItem(request.json)
 
 
 if __name__ == '__main__':
