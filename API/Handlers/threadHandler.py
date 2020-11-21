@@ -16,7 +16,7 @@ class ThreadHandler:
         This method is used by other methods in this class to properly format data. The method receives a row as a
         parameter and then splits the data into a dictionary. The dictionary is then returned to the corresponding method.
         """
-        result = {"ID": row[0], 'Date': row[1], 'isDuplicate': row[2], 'Category': row[3], 'user_id': row[4]}
+        result = {"ID": row[0], 'Date': row[1], 'isDuplicate': row[2], 'Category': row[3], 'user_id': row[4],'item_id':row[5]}
         return result
 
     def __build_thread_attributes(self, ID, date, duplicate, category, userID):
@@ -50,7 +50,7 @@ class ThreadHandler:
         category = json['category']
         user_id = json['user_ID']
 
-        if date and duplicate and category:
+        if date and duplicate and category and user_id:
             thread_id = ThreadDAO().inertThread(date, duplicate, category, user_id)
             result = self.__build_thread_attributes(thread_id, date, duplicate, category, user_id)
             return jsonify(Thread=result), 200
