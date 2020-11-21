@@ -94,6 +94,7 @@ class ThreadDAO:
                 "%s) returning thread_id; "
         cursor.execute(query, (date, duplicate, category, userID, item_id,))
         result = cursor.fetchone()
+        self.conn.commit()
         return result
 
     def getContentAndUsernameFromCommentsOnSpecificThread(self,ID):

@@ -50,7 +50,7 @@ class ThreadHandler:
         category = json['category']
         user_id = json['user_ID']
 
-        if date and duplicate and category:
+        if date and duplicate and category and user_id:
             thread_id = ThreadDAO().inertThread(date, duplicate, category, user_id)
             result = self.__build_thread_attributes(thread_id, date, duplicate, category, user_id)
             return jsonify(Thread=result), 200
