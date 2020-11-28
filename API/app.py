@@ -1,4 +1,5 @@
 # in order to run, type 'python -m flask run' in the command line
+from flask_cors import CORS
 from Handlers.userHandler import UserHandler
 from Handlers.threadHandler import ThreadHandler
 from Handlers.commentHandler import CommentHandler
@@ -6,6 +7,8 @@ from Handlers.itemHandler import ItemHandler
 from flask import Flask, request
 
 app = Flask(__name__)
+CORS(app)
+# app.use(cors())
 
 
 @app.route("/")
