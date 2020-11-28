@@ -5,7 +5,7 @@ class Login extends Component {
   constructor() {
     super()
     this.state = {
-      email: '',
+      eusername: '',
       password: '',
       errors: {}
     }
@@ -21,13 +21,13 @@ class Login extends Component {
     e.preventDefault()
 
     const user = {
-      email: this.state.email,
+      username: this.state.username,
       password: this.state.password
     }
 
     login(user).then(res => {
       if (!res.error) {
-        this.props.history.push(`/profile`)
+        this.props.history.push(`/http://127.0.0.1:5000/user/profile`)
       }
     })
   }
@@ -40,13 +40,13 @@ class Login extends Component {
             <form noValidate onSubmit={this.onSubmit}>
               <h1 style={{float:"center",Right:"350px"}} className="h3 mb-3 font-weight-normal">Log In</h1>
               <div className="form-group">
-                <label style={{float:"center",marginLeft:"200px"}} htmlFor="email">Email address</label>
+                <label style={{float:"center",marginLeft:"200px"}} htmlFor="email">Username</label>
                 <input
-                  type="email"
+                  type="username"
                   className="form-control"
-                  name="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
+                  name="username"
+                  placeholder="Enter username"
+                  value={this.state.username}
                   onChange={this.onChange}
                 />
               </div>

@@ -16,8 +16,8 @@ export const register = newUser => {
 }
 export const login = user => {
   return axios
-  .post('users/login', {
-      email: user.email,
+  .post('http://127.0.0.1:5000/users/login', {
+      username: user.username,
       password: user.password
     })
     .then(response => {
@@ -31,8 +31,8 @@ export const login = user => {
 
 export const getProfile = user => {
   return axios
-    .get('users/profile', {
-      //headers: { Authorization: ` ${this.getToken()}` }
+    .get('http://127.0.0.1:5000/users/profile', {
+      // headers: { Authorization: ` ${this.getToken()}` }
     })
     .then(response => {
       console.log(response)
