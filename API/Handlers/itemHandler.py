@@ -90,9 +90,7 @@ class ItemHandler:
         """
         result = ItemDAO().getAveragePrice(price)
         if result:
-            mapped_result = []
-            for entry in result:
-                mapped_result.append(self.build_item(entry))
+            mapped_result = self.build_item(result)
             return jsonify(Item=mapped_result)
         else:
             return jsonify(Error="NOT FOUND"), 404
@@ -145,10 +143,6 @@ class ItemHandler:
         found error.
         """
         result = ItemDAO().getItemName(string)
-        if result:
-            mapped_result = self.build_item(result)
-            return jsonify(Item=mapped_result)
-        result = ItemDAO().getAveragePrice(string)
         if result:
             mapped_result = self.build_item(result)
             return jsonify(Item=mapped_result)
