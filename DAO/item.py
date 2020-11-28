@@ -61,10 +61,11 @@ class ItemDAO:
         with a matching date then they are grouped and returned.
         """
         cursor = self.conn.cursor()
-        query = "Select average_price, item_id from item as I natural inner join user_item " \
-                "as U where i.i_id=i.i_id and i.i_id=%s;"
+        query = "Select item_id, item_description, average_price, item_name, item_history, " \
+                "image_url, user_id from item as I natural inner join user_item as U where I.item_id=U.item_id " \
+                "and I.average_price=%s;"
         cursor.execute(query, (price,))
-        result = cursor.fetchall()
+        result = cursor.fetchone()
         if result is None:
             return None
         return result
