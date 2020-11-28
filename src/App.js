@@ -9,7 +9,8 @@ import Home from './Component/Home.js';
 import About from './Component/About.js';
 import Search from './Component/Search.js';
 import Login from './Component/Login.js';
- 
+import Register from './Component/Register.js'
+
 function App() {
     return (      
       <Router>
@@ -22,6 +23,8 @@ function App() {
               <Route path="/about" component={About}/>
               <Route path="/search" component={Search}/>
               <Route path="/login" component={Login}/>
+              <Route path="/register" component={Register}/>
+              
               <Route component={Error}/>
            </Switch>
         </div> 
