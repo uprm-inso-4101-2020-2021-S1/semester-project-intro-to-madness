@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './CreateThread.css';
+import {createItem} from './UserFunctions.js';
 import {createThread} from './UserFunctions.js';
 
 class CreateThread extends Component {
@@ -12,6 +13,10 @@ class CreateThread extends Component {
           item_history: '',
           average_price: '',
           image_url: '',
+          category: '',
+          isDuplicate: false,
+          date: new Date().toDateString(),
+          user_ID: 1,
           errors: {}
         }
     
@@ -31,10 +36,20 @@ class CreateThread extends Component {
             item_history: this.state.item_history,
             item_description: this.state.item_description,
             image_url: this.state.image_url,
-            user_ID: 1
+            user_ID: this.state.user_ID
+        }
+
+        const newThread = {
+            category: this.state.category,  
+            date: this.state.date,
+            isDuplicate: true,
+            user_ID: this.state.user_ID
         }
     
-        createThread(newItem).then(res => {
+        createItem(newItem).then(res => {})
+        
+
+        createThread(newThread).then(res => {
           this.props.history.push('/')
         })
       }
@@ -47,7 +62,7 @@ class CreateThread extends Component {
               <tr><th>
               
               <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Create Item</h1>
+              <h1 className="h3 mb-3 font-weight-normal" style={{marginLeft: "0", padding: "20px 20px"}}>Create Item</h1>
               <div className="form-group">
                 <label style={{float:"center"}} htmlFor="item_name">Item</label>
                 <input
@@ -97,8 +112,19 @@ class CreateThread extends Component {
                   type="text"
                   className="form-control"
                   name="image_url"
-                  placeholder="Url"
+                  placeholder="Insert url"
                   value={this.state.image_url}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <label style={{float:"center"}} htmlFor="category">Category</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="category"
+                  placeholder="Item Category"
+                  value={this.state.category}
                   onChange={this.onChange}
                 />
               </div>

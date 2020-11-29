@@ -43,7 +43,7 @@ export const getProfile = user => {
     })
 }
 
-export const createThread = newItem => {
+export const createItem = newItem => {
     return axios
       .post('http://127.0.0.1:5000/items/create', {
       item_description: newItem.item_description,
@@ -54,6 +54,19 @@ export const createThread = newItem => {
       user_ID: 1
       })
       .then(response => {
-        console.log('Created.')
+        console.log('Item Created.')
+      })
+  }
+
+  export const createThread = newThread => {
+    return axios
+      .post('http://127.0.0.1:5000/threads/create', {
+        category: newThread.category,  
+        date: newThread.date,
+        isDuplicate: newThread.isDuplicate,
+        user_ID: newThread.user_ID
+      })
+      .then(response => {
+        console.log('Thread Created.')
       })
   }
