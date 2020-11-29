@@ -117,7 +117,7 @@ class ItemDAO:
         """
         cursor = self.conn.cursor()
         query = "insert into item(item_description, average_price, item_name, item_history, image_url, user_id) values " \
-                "(%s, %s, %s, %s, %s, %s) returning item.i_id;"
+                "(%s, %s, %s, %s, %s, %s) returning item.item_id;"
         cursor.execute(query, (iDesc, iPrice, iName, iHistory, iImage, userID))
         result = cursor.fetchone()
         self.conn.commit()

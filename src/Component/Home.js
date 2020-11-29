@@ -1,21 +1,28 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './Home.css';
 import {Link} from 'react-router-dom'
-import Item from './Item.js';
-// lol
-function Home() {
-  // This would find the most recent threads from the backend
-  const [recentThread, setRecentThread] = useState([{}]);
 
-  
+function Home() {
+
+  // This finds  the most recent threads from the backend
+  const [threads, setThreads] = useState([{}]);
+
+  const [items, setItems] = useState([{}]);
+
+  useEffect(()=> {
+    fetch('/threads').then(
+      response => response.json()
+    ).then(data => setThreads(data.Thread.slice(-3)))
+  }, []);
 
   useEffect(()=> {
     fetch('/items').then(
       response => response.json()
-    ).then(data => setRecentThread(data.Item))
+    ).then(data => setItems(data.Item.slice(-3)))
   }, []);
   
+  var i = 0;
+
   return (
     <div className="Home">
 
@@ -24,7 +31,7 @@ function Home() {
       <h2 style={{marginLeft: '200px'}}>Recent Threads: </h2>
       <div className='threads-div'>
 
-      {recentThread.map((recent) => (
+      {items.map((recent) => (
 
         <table className='threads-table'><tr>
           <th><Link to={{
@@ -41,7 +48,7 @@ function Home() {
           <th><h2>Item: <i>{recent.item_name}</i></h2>
           <h2>Price: <i>${recent.average_price}</i></h2></th>
           <th><h2>Date Created:</h2>
-          <h2>*Filler Date*</h2></th>
+          <h2>{threads[i++].Date}</h2></th>
         </tr></table>
       ))}
       </div>

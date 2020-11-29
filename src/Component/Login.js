@@ -1,7 +1,5 @@
 import React from 'react';
 import './Login.css';
-import example from '../Images/Example.PNG';
-import { NavLink } from 'react-router-dom';
 
   // Unfinished functions that make the buttons open up another page
   function Login() {

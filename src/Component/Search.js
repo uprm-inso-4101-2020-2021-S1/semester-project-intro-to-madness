@@ -18,14 +18,6 @@ function Search() {
             response => response.json()
             ).then(data => setThreads(data.Thread))
     }
-    
-    // This gets all the users from the storage.
-    // const [users, setUsers] = useState([{}]);
-    // useEffect(()=> {
-    //     fetch('/users').then(
-    //     response => response.json()
-    //     ).then(data => setUsers(data.User))
-    // }, []);
 
     const sorts = ["Purus Institute", "Ac Ipsum Associates", "Faucibus Company", "Phasellus LLP", "Aenean Corp."];
     const [sorting, setSorting] = useState(sorts[0]);

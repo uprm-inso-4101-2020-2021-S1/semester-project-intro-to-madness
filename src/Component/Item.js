@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './Item.css';
-import example from '../Images/Example.PNG';
 
   // Unfinished functions that make the buttons open up another page
 

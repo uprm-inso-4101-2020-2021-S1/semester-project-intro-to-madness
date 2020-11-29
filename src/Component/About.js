@@ -1,6 +1,5 @@
 import React from 'react';
 import './About.css'
-import { NavLink } from 'react-router-dom';
 
   // Unfinished functions that make the buttons open up another page
   function About() {
