@@ -48,7 +48,7 @@ function Search() {
             {threads.map((thread) => (
 
                 <table className='threads-table'><tr>
-                <th><Link to='/item'><img src={Example} className="threadImage" alt="Filler"/></Link></th>
+                <th><Link to='/'><img src={Example} className="threadImage" alt="Filler"/></Link></th>
                 <th><h2><b>(Item Name)</b></h2>
                 {/* <h2>By: <i>{users[1].username}</i></h2> */}
                 <h2>On: <i>{thread.Date}</i></h2></th>

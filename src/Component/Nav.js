@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
          <div id='SideBar'>
             <ul>
                <u1 className="nav-links"><Link style={navStyle} to ='/'><li style={{paddingTop: "10px"}}><button style={{width: "120px"}}>Home</button></li></Link></u1>
-               <u1 className="nav-links"><Link style={navStyle} to ='/item'><li><button style={{width: "120px"}}>Your Items</button></li></Link></u1>
+               <u1 className="nav-links"><Link style={navStyle} to ='/create'><li><button style={{width: "120px"}}>Create Thread</button></li></Link></u1>
                <u1 className="nav-links"><Link style={navStyle} to ='/search'><li><button style={{width: "120px"}}>Sort Items</button></li></Link></u1>
                {/* <u1 className="nav-links"><Link style={navStyle} to ='/'><li><button style={{width: "120px"}}>Recently Added</button></li></Link></u1> */}
                <u1 className="nav-links"><Link style={navStyle} to ='/profile'><li><button style={{width: "120px"}}>Profile</button></li></Link></u1>
