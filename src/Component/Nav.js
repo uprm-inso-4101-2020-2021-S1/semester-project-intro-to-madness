@@ -23,10 +23,10 @@ import { Link } from 'react-router-dom';
             <ul>
                <u1 className="nav-links"><Link style={navStyle} to ='/'><li style={{paddingTop: "10px"}}><button style={{width: "120px"}}>Home</button></li></Link></u1>
                <u1 className="nav-links"><Link style={navStyle} to ='/create'><li><button style={{width: "120px"}}>Create Thread</button></li></Link></u1>
-               <u1 className="nav-links"><Link style={navStyle} to ='/search'><li><button style={{width: "120px"}}>Popular Items</button></li></Link></u1>
+               <u1 className="nav-links"><Link style={navStyle} to ='/search'><li><button style={{width: "120px"}}>Category</button></li></Link></u1>
               
-               <u1 className="nav-links"><Link style={navStyle} to ='/profileout'><li><button style={{width: "120px"}}>LogOut</button></li></Link></u1>
-
+               <u1 className="nav-links"><Link style={navStyle} to ='/profileout'><li><button style={{width: "120px"}}>Profile</button></li></Link></u1>
+               <u1 className="nav-links"><Link style={navStyle} to ='/'><li><button style={{width: "120px"}}>LogOut</button></li></Link></u1>
                <u1 className="nav-links"><Link style={navStyle} to ='/about'><li id='AboutUs'><button style={{width: "120px"}}>About Us</button></li></Link></u1>
 
             </ul>

@@ -140,12 +140,6 @@ class CreateThread extends Component {
               </form>
               </th></tr>
             </table>
-            <table style={{backgroundColor: "#2F4F4F", borderStyle: "solid", position: "relative", margin: "auto", top: '60px'} }>
-              <tr><th>
-                <h2>For the item creation to work, install the following chrome extension.</h2>
-                <a href="https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">Install me</a>
-              </th></tr>
-            </table>
           </div>
         );
       }
