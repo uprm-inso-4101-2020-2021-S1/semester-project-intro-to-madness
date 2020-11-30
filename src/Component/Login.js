@@ -1,53 +1,80 @@
-import React from 'react';
-import './Login.css';
+import React, { Component } from 'react'
+import { login } from './UserFunctions'
 
-  // Unfinished functions that make the buttons open up another page
-  function Login() {
+class Login extends Component {
+  constructor() {
+    super()
+    this.state = {
+      eusername: '',
+      password: '',
+      errors: {}
+    }
 
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
 
-  // This would call on the backend to find the user information
-//   const [login, setUser] = React.useState({
-//       firstname: 'Carl',
-//       lastname: 'Winslow',
-//       username: 'UrcleWhisperer',
-//     email: 'Familymatters@gmail.com',
-//     password: 'UrcleNeverLeaves',
-//     cpassword: 'UrcleNeverLeaves'
-//   });
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+  onSubmit(e) {
+    e.preventDefault()
 
-  
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    }
 
-  return (
-    <div className="Login">
-<h1 style={{float:"center",marginLeft:"200px"}}>Login & Registration</h1>
-    {/* Everything that's not the Top or Side Bar */}
-      <div id='Body'>
-        
-        {/* Square with user's info */}
-        <table style={{float:"left",backgroundColor: "blanchedalmond", borderStyle: "solid", marginLeft:"250px"}}>
-          <tr><th>
-            {/* This is the first column TODO: you know*/}
-            <div className='CredentialSquare'><h2 style={{float:"left"}}>UserName: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-            <div className='CredentialSquare'><h2 style={{float:"left"}}>Password: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-          
-            </th>
-            </tr>
-            </table>
-            <table style={{float:"right",backgroundColor: "blanchedalmond", borderStyle: "solid", marginRight:"150px"}}>
-          <tr><th>
-          <div className='CredentialSquare'><h2 style={{float:"left"}}>Name: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-          <div className='CredentialSquare'><h2 style={{float:"left"}}>UserName: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-          <div className='CredentialSquare'><h2 style={{float:"left"}}>Email: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-          <div className='CredentialSquare'><h2 style={{float:"left"}}>Password: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-          <div className='CredentialSquare'><h2 style={{float:"left"}}>Confirm: </h2><input type="text" placeholder=""style={{marginTop:"25px"}}/></div>
-            </th>
-            </tr>
-            </table>
-            </div>
-            </div>
-  
-  )
+    login(user).then(res => {
+      if (!res.error) {
+        this.props.history.push(`/http://127.0.0.1:5000/user/profile`)
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 mt-5 mx-auto">
+            <form noValidate onSubmit={this.onSubmit}>
+              <h1 style={{float:"center",Right:"350px"}} className="h3 mb-3 font-weight-normal">Log In</h1>
+              <div className="form-group">
+                <label style={{float:"center",marginLeft:"200px"}} htmlFor="email">Username</label>
+                <input
+                  type="username"
+                  className="form-control"
+                  name="username"
+                  placeholder="Enter username"
+                  value={this.state.username}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <label style={{float:"center",marginLeft:"200px"}} htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                />
+              </div>
+              <button style={{marginLeft:"200px"}}
+                type="submit"
+                className="btn btn-lg btn-primary btn-block"
+              >
+                Sign in
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default Login;
+export default Login
+
 
