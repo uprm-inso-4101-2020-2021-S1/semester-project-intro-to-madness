@@ -11,7 +11,7 @@ import Search from './Component/Search.js';
 import Login from './Component/Login.js';
 import Register from './Component/Register.js';
 import Create from './Component/CreateThread.js';
-
+import LoggedOutProfile from './Component/LoggedOutProfile.js';
 function App() {
     return (      
       <Router>
@@ -26,7 +26,7 @@ function App() {
               <Route path="/login" component={Login}/>
               <Route path="/register" component={Register}/>
               <Route path="/create" component={Create}/>
-              
+              <Route path="/profileout" component={LoggedOutProfile}/>
               <Route component={Error}/>
            </Switch>
         </div> 
