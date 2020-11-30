@@ -21,7 +21,15 @@ function Home() {
     ).then(data => setItems(data.Item.slice(-3)))
   }, []);
   
-  var i = 0;
+  const getThread = (item) =>{
+    var result = "NA";
+    for(var thread of threads){
+        if(item.ID == thread.item_id){
+            result = thread
+        }
+    }
+    return(result)
+}
 
   return (
     <div className="Home">
@@ -48,7 +56,7 @@ function Home() {
           <th><h2>Item: <i>{recent.item_name}</i></h2>
           <h2>Price: <i>${recent.average_price}</i></h2></th>
           <th><h2>Date Created:</h2>
-          <h2>{threads[i++].Date}</h2></th>
+          <h2>{getThread(recent).Date}</h2></th>
         </tr></table>
       ))}
       </div>

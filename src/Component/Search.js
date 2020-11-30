@@ -19,9 +19,25 @@ function Search() {
             ).then(data => setThreads(data.Thread))
     }
 
+    const [items, setItems] = useState([{}]);
+    useEffect(()=> {
+        fetch('/items').then(
+          response => response.json()
+        ).then(data => setItems(data.Item))
+      }, []);
+
+    const getItem = (threads) =>{
+        var result = "NA";
+        for(var item of items){
+            if(item.ID == threads.item_id){
+                result = item
+            }
+        }
+        return(result)
+    }
+
     const sorts = ["Purus Institute", "Ac Ipsum Associates", "Faucibus Company", "Phasellus LLP", "Aenean Corp."];
     const [sorting, setSorting] = useState(sorts[0]);
-
 
     return (
         <div className="Search">
@@ -40,8 +56,18 @@ function Search() {
             {threads.map((thread) => (
 
                 <table className='threads-table'><tr>
-                <th><Link to='/'><img src={Example} className="threadImage" alt="Filler"/></Link></th>
-                <th><h2><b>(Item Name)</b></h2>
+                <th><Link to={{
+                    pathname: "/item",
+                    search: getItem(thread).item_name,
+                    state:{
+                    item: getItem(thread).item_name,
+                    image: getItem(thread).image_url,
+                    price: getItem(thread).average_price,
+                    description: getItem(thread).item_description,
+                    history: getItem(thread).item_history
+                }
+                }}><img src={Example} className="threadImage" alt="Filler"/></Link></th>
+                <th><h2><b>{getItem(thread).item_name}</b></h2>
                 {/* <h2>By: <i>{users[1].username}</i></h2> */}
                 <h2>On: <i>{thread.Date}</i></h2></th>
                 </tr></table>
