@@ -29,17 +29,14 @@ export const login = user => {
     })
 }
 
-export const getProfile = user => {
+export const getUser = id => {
   return axios
-    .get('http://127.0.0.1:5000/users/profile', {
-      // headers: { Authorization: ` ${this.getToken()}` }
-    })
+    .get(`users/getuser/${id}`)
     .then(response => {
-      console.log(response)
-      return response.data
+      return response
     })
     .catch(err => {
-      console.log(err)
+      return err
     })
 }
 
