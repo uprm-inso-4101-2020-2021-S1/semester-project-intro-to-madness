@@ -16,12 +16,22 @@ class CreateThread extends Component {
           category: '',
           isDuplicate: false,
           date: new Date().toDateString(),
-          user_ID: 1,
+          user_ID: 0,
           errors: {}
         }
     
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+      }
+
+      componentDidMount() {
+        fetch('http://127.0.0.1:5000/users')
+        .then(res => res.json())
+        .then(json => {
+          this.setState({
+            user_ID: json.User[json.User.length-1].ID
+          })
+        })
       }
     
       onChange(e) {
